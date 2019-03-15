@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import "./SocialCard.scss";
 export default class SocialCard extends Component {
     state = {
-        expanded:false
+        expanded:false,
+        article:{
+          author:"Yannik",
+          profilePic:"http://conferenceoeh.com/wp-content/uploads/profile-dummy-girl.jpg",
+          timestamp:"15-03-2019",
+          text:"Is this real-life?",
+          imgUrl:"https://i.ebayimg.com/images/g/HKIAAOSwtOZcaqpW/s-l1600.jpg"
+        }
     }
+    
   render() {
       let contentClasses = ["social--content"]
       let indicatorClasses = ["fas","fa-angle-left"]
@@ -15,13 +23,13 @@ export default class SocialCard extends Component {
     return (
       <div className="social-card">
         <div className="social--header">
-        <span><img src="http://conferenceoeh.com/wp-content/uploads/profile-dummy-girl.jpg" alt=""/><h5><a href="#">Username</a></h5></span>
-        <span><small>timestamp</small><i className={indicatorClasses.join(" ")} onClick={() => {this.setState({expanded:!this.state.expanded})}}></i></span></div>
+        <span><img src={this.state.article.profilePic} alt=""/><h5><a href="#">{this.state.article.author}</a></h5></span>
+        <span><small>{this.state.article.timestamp}</small><i className={indicatorClasses.join(" ")} onClick={() => {this.setState({expanded:!this.state.expanded})}}></i></span></div>
         <div className={contentClasses.join(" ")}>
                 <hr/>
                 <div className="social--body">
-                    <p>is this real life?</p>
-                    <img src="https://i.ebayimg.com/images/g/HKIAAOSwtOZcaqpW/s-l1600.jpg" alt="1 nice picture"/>
+                    <p>{this.state.article.text}</p>
+                    <img src={this.state.article.imgUrl} alt=""/>
                 </div>
                 <div className="social--footer">
                 <div className="social--action-box">
